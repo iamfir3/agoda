@@ -1,0 +1,29 @@
+.input{
+    width: 0;
+    opacity: 0;
+    height: 0;
+    position:absolute;
+}
+
+.otherNavContainer{
+    position: absolute;
+    top: 30px;
+    left: 0;
+    line-height: 56px;
+    display: none;
+    box-shadow: 0 0 4px 1px rgba(0,0,0,.25);
+    border-radius: 1px;
+    background-color: white;
+    z-index: 10;
+} 
+.NavLink{
+
+}
+
+.NavLink:hover{
+    
+}
+
+.input:focus ~ .otherNavContainer{
+    display: block;
+}
