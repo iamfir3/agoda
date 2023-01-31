@@ -10,7 +10,7 @@ import { color } from "../Utils/Constans";
 
 const Header = () => {
   return (
-    <div className="flex items-center h-[60px] px-[40px] gap-[56px]">
+    <div className="hidden md:flex items-center h-[60px] px-[40px] gap-[56px]">
       <img
         src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg"
         alt="agoda"
@@ -122,30 +122,34 @@ const Header = () => {
           >
             <path d="M3.133 3c.7 0 1.3.482 1.459 1.152l.026.136L4.862 6h15.536a1 1 0 0 1 1 1l-.005.093-.013.091-1.083 5.777a2.5 2.5 0 0 1-2.286 2.033l-.17.006H6.146l.103.712a1.5 1.5 0 0 0 1.346 1.282l.139.006H19.5a.5.5 0 0 1 .09.992L19.5 18h-2a2.5 2.5 0 1 1-4 0h-3a2.5 2.5 0 1 1-3.807-.228 2.496 2.496 0 0 1-1.404-1.753l-.03-.165L3.629 4.429a.5.5 0 0 0-.404-.42L3.133 4H1.5a.5.5 0 0 1-.09-.992L1.5 3h1.633zM8.5 18a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-9.496-4H17.84a1.5 1.5 0 0 0 1.441-1.084l.033-.14L20.398 7H5.005l.999 7z"></path>
           </svg>
-          <Button
-            paddingX="12px"
-            paddingY="12px"
-            backgroundColor="white"
-            hoverColor={color.lightBlue}
-            borderColor="transparent"
-            textColor={color.lightBlue}
-            textHover="white"
-          >
-            <p className="text-[14px] font-[400] leading-[14px]">Sign in</p>
-          </Button>
-          <Button
-            paddingX="12px"
-            paddingY="12px"
-            backgroundColor="white"
-            hoverColor={color.lightBlue}
-            borderColor={color.lightBlue}
-            textColor={color.lightBlue}
-            textHover="white"
-          >
-            <p className="text-[14px] font-[300] leading-[14px]">
-              Create account
-            </p>
-          </Button>
+          <Link to="/login">
+            <Button
+              paddingX="12px"
+              paddingY="12px"
+              backgroundColor="white"
+              hoverColor={color.lightBlue}
+              borderColor="transparent"
+              textColor={color.lightBlue}
+              textHover="white"
+            >
+              <p className="text-[14px] font-[400] leading-[14px]">Sign in</p>
+            </Button>
+          </Link>
+          <Link to='/signup'>
+            <Button
+              paddingX="12px"
+              paddingY="12px"
+              backgroundColor="white"
+              hoverColor={color.lightBlue}
+              borderColor={color.lightBlue}
+              textColor={color.lightBlue}
+              textHover="white"
+            >
+              <p className="text-[14px] font-[300] leading-[14px]">
+                Create account
+              </p>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

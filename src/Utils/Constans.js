@@ -5,6 +5,8 @@ export const path ={
     FLIGHTS:'flights',
     LONGSTAY:'longstay',
     ACTIVITY:'activity',
+    LOGIN:'login',
+    SIGNUP:'signup',
 }
 
 export const color = {
@@ -14,4 +16,6 @@ export const color = {
     red: "#e12d2d",
     lightRed: "#ff567d",
     darkRed: "#b42424",
+    background1:'#EAEBEF',
+    grey2:'#cfd0d2'
   };

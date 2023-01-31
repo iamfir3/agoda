@@ -1,7 +1,7 @@
-import {Home} from "./Pages";
-import { HomeSearch,Homes } from "./Components";
-import {Routes,Route,useParams} from "react-router-dom";
-import {path} from "./Utils/Constans";
+import { Home, Login } from "./Pages";
+import { HomeSearch, Homes } from "./Components";
+import { Routes, Route, useParams } from "react-router-dom";
+import { path } from "./Utils/Constans";
 
 function App() {
   const params = useParams()["*"];
@@ -13,6 +13,8 @@ function App() {
           <Route path={path.HOME} element={<HomeSearch></HomeSearch>}></Route>
           <Route path={path.HOMES} element={<Homes></Homes>}></Route>
         </Route>
+
+        <Route path={path.LOGIN} element={<Login></Login>}></Route>
       </Routes>
     </div>
   );
