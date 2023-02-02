@@ -6,7 +6,7 @@ import { color } from "../Utils/Constans";
 const Search = () => {
   const params = useParams()["*"];
   return (
-    <div className="relative pt-[24px] pb-[43px]">
+    <div className="relative pt-[24px] pb-[5px]">
       <div
         className={`${CssClass.searchBackground} absolute w-full h-[320px] left-0 top-0`}
       ></div>
@@ -213,17 +213,17 @@ const Search = () => {
           <Outlet></Outlet>
         </div>
         <div className="flex justify-center translate-y-[-50px] relative z-10">
-            <Button
-              backgroundColor={color.primary}
-              textColor="white"
-              hoverColor={color.lightBlue}
-              textHover="white"
-              paddingX="250px"
-              paddingY="18px"
-            >
-              <p className="text-[20px] leading-[26px]">SEARCH</p>
-            </Button>
-          </div>
+          <Button
+            backgroundColor={color.primary}
+            textColor="white"
+            hoverColor={color.lightBlue}
+            textHover="white"
+            paddingX="250px"
+            paddingY="18px"
+          >
+            <p className="text-[20px] leading-[26px]">SEARCH</p>
+          </Button>
+        </div>
       </div>
     </div>
   );

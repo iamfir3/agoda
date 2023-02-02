@@ -1,0 +1,9 @@
+.InputAuth{
+    border:1px solid var(--borderColor);
+    border-radius: 6px;
+}
+
+.InputAuth:focus{
+    border:1px solid var(--borderFocus);
+    box-shadow: 0 0 10px 0.2px var(--borderFocus);
+}

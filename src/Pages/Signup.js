@@ -1,8 +1,8 @@
-import { Header, AuthFormLogin, HeaderWithBack } from "../Components";
-import { IoIosArrowBack, IoIosUnlock } from "react-icons/io";
+import { AuthFormSignup, HeaderWithBack, Header } from "../Components";
+import { IoIosArrowBack } from "react-icons/io";
 import { HiCheckCircle } from "react-icons/hi";
 
-const Login = () => {
+const Signup = () => {
   return (
     <>
       {/* Desktop */}
@@ -11,7 +11,7 @@ const Login = () => {
         <div className="flex justify-center bg-background1 md:bg-background2 px-[15px] pt-[15px] md:pt-[40px] w-full pb-[30px] md:pb-[80px]">
           <div className="hidden md:flex w-[52%] bg-white shadow-2xl">
             <div className="w-1/2">
-              <AuthFormLogin />
+              <AuthFormSignup />
             </div>
             <div className=" w-1/2">
               <div className="bg-lightBlue2 flex py-[25px] items-center justify-center">
@@ -41,17 +41,17 @@ const Login = () => {
         </div>
       </div>
       {/* Mobile */}
-      <div className="relative md:hidden bg-background1">
+      <div className="relative md:hidden h-screen bg-background1">
         <HeaderWithBack icon={<IoIosArrowBack size="30"></IoIosArrowBack>}>
-          <p className="text-center text-[18px] font-[500]">Sign In</p>
+          <p className="text-center text-[18px] font-[500]">Sign Up</p>
         </HeaderWithBack>
         <div className="h-[60px] w-full"></div>
-        <div className="px-[15px] pt-[20px] pb-[30px]">
-          <AuthFormLogin />
+        <div>
+          <AuthFormSignup></AuthFormSignup>
         </div>
       </div>
     </>
   );
 };
 
-export default Login;
+export default Signup;

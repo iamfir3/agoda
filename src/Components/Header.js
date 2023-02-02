@@ -11,11 +11,13 @@ import { color } from "../Utils/Constans";
 const Header = () => {
   return (
     <div className="hidden md:flex items-center h-[60px] px-[40px] gap-[56px]">
-      <img
-        src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg"
-        alt="agoda"
-        className="w-[89px] h-[37px] cursor-pointer"
-      ></img>
+      <Link to="/">
+        <img
+          src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg"
+          alt="agoda"
+          className="w-[89px] h-[37px] cursor-pointer"
+        ></img>
+      </Link>
       <div className="flex justify-between w-full">
         <div className=" flex items-center gap-[32px] text-[14px] font-[500] text-black">
           <Link
@@ -135,7 +137,7 @@ const Header = () => {
               <p className="text-[14px] font-[400] leading-[14px]">Sign in</p>
             </Button>
           </Link>
-          <Link to='/signup'>
+          <Link to="/signup">
             <Button
               paddingX="12px"
               paddingY="12px"
