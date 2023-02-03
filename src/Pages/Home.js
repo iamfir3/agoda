@@ -1,4 +1,4 @@
-import { Header, Search, VipBanner,Promotions } from "../Components";
+import { Header, Search, VipBanner,Promotions,Footer } from "../Components";
 import Button from "../Components/Button";
 import { color } from "../Utils/Constans";
 const Home = () => {
@@ -33,6 +33,9 @@ const Home = () => {
       </div>
       <div className="flex justify-center mt-[30px]">
         <Promotions></Promotions>
+      </div>
+      <div className="bg-background4 w-full flex justify-center pt-[60px] pb-[50px]">
+        <Footer></Footer>
       </div>
     </div>
   );

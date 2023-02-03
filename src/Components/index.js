@@ -11,4 +11,5 @@ export {default as Button} from "./Button";
 export {default as Flights} from "./Flights";
 export {default as Promotions} from "./Promotions";
 export {default as VipBanner} from "./VipBanner";
+export {default as Footer} from "./Footer";
 export {default as PromotionItem} from "./PromotionItem";
