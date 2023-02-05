@@ -7,12 +7,45 @@ import { SlArrowDown } from "react-icons/sl";
 import Tag from "./Tag";
 import { useState } from "react";
 import Destination from "./Destination";
+import AmountPeopleOptions from "./AmountPeopleOptions";
+
 const HomeSearch = () => {
   const [type, setType] = useState("Overnight Stays");
   const [destination, setDestination] = useState();
   const [days, setDays] = useState({ checkin: "", checkout: "" });
   const [flightInfo, setFlightInfo] = useState();
   const [isTyping, setIsTyping] = useState(false);
+  const [showOptions, setShowOptions] = useState({
+    search: false,
+    date: false,
+    amount: false,
+  });
+  const [amount, setAmount] = useState({ adult: 1, room: 1, children: 0 });
+  
+  const handleShowOptions = (option) => {
+    if (option) {
+      setShowOptions((prev) => {
+        const newOptionShow = { ...prev };
+        Object.keys(newOptionShow).map((key) => {
+          if (key !== option) {
+            newOptionShow[key] = false;
+          } else {
+            newOptionShow[key] = true;
+          }
+        });
+        return newOptionShow;
+      });
+    } else {
+      setShowOptions((prev) => {
+        const newOptionShow = { ...prev };
+        Object.keys(newOptionShow).map((key) => {
+          newOptionShow[key] = false;
+        });
+        return newOptionShow;
+      });
+    }
+  };
+
   return (
     <div className="bg-white w-full px-[48px] pb-[48px] pt-[32px] rounded-[18px]">
       <div className="flex gap-[10px]">
@@ -73,9 +106,7 @@ const HomeSearch = () => {
               ? "opacity-1 w-auto translate-y-[0]"
               : "opacity-0 w-0 translate-y-[-20px]"
           } transition-all ease-in-out before:top-0 before:left-0 before:content-[''] before:absolute before:border-[10px] before:border-r-[transparent] before:border-t-[transparent] before:border-l-[transparent] before:border-b-red`}
-        >
-          
-        </div>
+        ></div>
       </div>
 
       <div className="flex w-full mt-[12px] gap-[12px]">
@@ -101,15 +132,36 @@ const HomeSearch = () => {
           </div>
         </div>
 
-        <div className="flex border-[1px] border-superLightGrey py-[15px] flex-auto items-center justify-between text-grey rounded-[8px] px-[25px] ">
+        <div
+          className="flex border-[1px] border-superLightGrey py-[15px] flex-auto items-center justify-between text-grey rounded-[8px] px-[25px] relative z-[11]"
+          onClick={() => {
+            handleShowOptions("amount");
+          }}
+        >
           <div className="flex gap-[15px] items-center">
             <HiOutlineUsers className="text-[24px]"></HiOutlineUsers>
             <div>
-              <p className="text-black text-[16px] leading-[23px]">2 adults</p>
-              <p className="text-[14px] leading-[18px]">1 room</p>
+              <div className="flex">
+                <p className="text-black text-[16px] leading-[23px]">
+                  {amount.adult} adults
+                </p>
+                {amount.children > 0 && (
+                  <p className="text-black text-[16px] leading-[23px]">
+                    {amount.children}, children
+                  </p>
+                )}
+              </div>
+              <p className="text-[14px] leading-[18px]">{amount.room} room</p>
             </div>
           </div>
           <SlArrowDown className=""></SlArrowDown>
+
+          {showOptions.amount && (
+            <AmountPeopleOptions
+              setShowOptions={setShowOptions}
+              setAmount={setAmount}
+            ></AmountPeopleOptions>
+          )}
         </div>
       </div>
 

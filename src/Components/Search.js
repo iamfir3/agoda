@@ -212,7 +212,7 @@ const Search = () => {
         <div className="w-[60%] relative z-[9] translate-y-[-5%] animate-showSearch shadow-2xl">
           <Outlet></Outlet>
         </div>
-        <div className="flex justify-center translate-y-[-50px] relative z-10">
+        <div className="flex justify-center translate-y-[-50px] relative z-[9]">
           <Button
             backgroundColor={color.primary}
             textColor="white"

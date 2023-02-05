@@ -12,6 +12,8 @@ const Promotions = () => {
       <Link to="/" className="flex items-center gap-[4px] justify-self-end text-primary">
         <p className="text-[14px]">View all</p> <IoIosArrowForward size="14"></IoIosArrowForward>
       </Link>
+
+      
     </div>
   );
 };

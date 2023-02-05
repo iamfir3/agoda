@@ -8,31 +8,6 @@ import Tag from "./Tag";
 const Homes = () => {
   return (
     <div className="bg-white w-full px-[48px] pb-[48px] pt-[32px] rounded-[18px]">
-      <div className="flex gap-[10px]">
-        <Button
-          backgroundColor="white"
-          hoverColor={color.lightBlue}
-          paddingX="5px"
-          paddingY="10px"
-          textColor={color.lightBlue}
-          textHover="white"
-          borderColor={color.lightBlue}
-        >
-          <p>Overnight Stays</p>
-        </Button>
-
-        <Button
-          backgroundColor="white"
-          hoverColor={color.lightBlue}
-          paddingX="5px"
-          paddingY="10px"
-          textColor={color.lightBlue}
-          textHover="white"
-          borderColor={color.lightBlue}
-        >
-          <p>Day Use Stays</p>
-        </Button>
-      </div>
 
       <div className="flex w-full gap-[15px] border-[1px] border-superLightGrey h-[65px] items-center px-[25px] mt-[13px] rounded-[8px]">
         <CiSearch size="30" className="text-grey placeholder:text-black" />
