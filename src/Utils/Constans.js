@@ -7,6 +7,7 @@ export const path ={
     ACTIVITY:'activity',
     LOGIN:'login',
     SIGNUP:'signup',
+    DETAIL:'detail'
 }
 
 export const color = {
