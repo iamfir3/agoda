@@ -1,4 +1,4 @@
-import { Header, Search, VipBanner, Promotions } from "../Components";
+import { Header, SliderComment } from "../Components";
 import { CiSearch } from "react-icons/ci";
 import {
   FaRegCalendarCheck,
@@ -261,7 +261,7 @@ function Detail() {
             </div>
             {/* Hygiene Plus */}
             <div className="flex mt-3 ">
-              <div className=" border-[1px] p-5">
+              <div className=" border-[1px] p-5 w-full">
                 <div className="mb-3 font-medium text-xl">Hygiene Plus</div>
                 <span>
                   This property has self-selected and self-certified the
@@ -373,33 +373,39 @@ function Detail() {
           </div>
           {/* Rate */}
           <div className="w-1/3 flex flex-col gap-4">
-            <div className="h-2/5 border-[1px] mt-3 p-3">
+            <div className="h-2/5 border-[1px] mt-3 p-3 flex flex-1 flex-col gap-1">
               {/* Exceptional */}
-              <div className="flex gap-5 mb-3">
-                <div className="bg-primary rounded-t-full rounded-l-full h-[50px] w-[50px] flex justify-center items-center">
-                  <b className="font-bold text-xl text-white">9.2</b>
+              <div className="h-fit">
+                <div className="flex gap-5 mb-3">
+                  <div className="bg-primary rounded-t-full rounded-l-full h-[50px] w-[50px] flex justify-center items-center">
+                    <b className="font-bold text-xl text-white">9.2</b>
+                  </div>
+                  <div className="">
+                    <p className="">Exceptional</p>
+                    <p className="text-primary text-[15px]">433 reviews</p>
+                  </div>
                 </div>
-                <div className="">
-                  <p className="">Exceptional</p>
-                  <p className="text-primary text-[15px]">433 reviews</p>
+                <div className="flex flex-wrap gap-1">
+                  <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
+                    <span>Housekeeping</span>
+                    <span>12</span>
+                    <AiFillLike className="text-[#32a923]" />
+                  </div>
+                  <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
+                    <span>Breakfast</span>
+                    <span>12</span>
+                    <AiFillLike className="text-[#32a923]" />
+                  </div>
+                  <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
+                    <span>Shops</span>
+                    <span>12</span>
+                    <AiFillLike className="text-[#32a923]" />
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
-                  <span>Housekeeping</span>
-                  <span>12</span>
-                  <AiFillLike className="text-[#32a923]" />
-                </div>
-                <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
-                  <span>Breakfast</span>
-                  <span>12</span>
-                  <AiFillLike className="text-[#32a923]" />
-                </div>
-                <div className="flex border-[1px] p-2 gap-2 text-xs rounded-[5px]">
-                  <span>Shops</span>
-                  <span>12</span>
-                  <AiFillLike className="text-[#32a923]" />
-                </div>
+
+              <div className="flex-auto">
+                <SliderComment />
               </div>
             </div>
             <div className="h-3/5 border-[1px] p-3 text-gray-600">
