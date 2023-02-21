@@ -3,7 +3,7 @@ import { Outlet, Link, useParams } from "react-router-dom";
 import Tag from "./Tag";
 import Button from "./Button";
 import { color } from "../Utils/Constans";
-const Search = () => {
+const Search = ({isSearching,setIsSearching,showOptions,handleShowOptions}) => {
   const params = useParams()["*"];
   return (
     <div className="relative pt-[24px] pb-[5px]">
@@ -209,20 +209,20 @@ const Search = () => {
           </Link>
         </div>
 
-        <div className="w-[60%] relative z-[9] translate-y-[-5%] animate-showSearch shadow-2xl">
-          <Outlet></Outlet>
-        </div>
-        <div className="flex justify-center translate-y-[-50px] relative z-[9]">
-          <Button
-            backgroundColor={color.primary}
-            textColor="white"
-            hoverColor={color.lightBlue}
-            textHover="white"
-            paddingX="250px"
-            paddingY="18px"
-          >
-            <p className="text-[20px] leading-[26px]">SEARCH</p>
-          </Button>
+        <div className="w-[60%] rounded-[18px] bg-white relative z-[8] translate-y-[-5%] animate-showSearch shadow-2xl">
+          <Outlet context={{isSearching:isSearching,setIsSearching:setIsSearching,handleShowOptions:handleShowOptions,showOptions:showOptions}}></Outlet>
+          <div className="flex justify-center absolute translate-y-[-30px] z-[3] left-[50%] translate-x-[-50%]">
+            <Button
+              backgroundColor={color.primary}
+              textColor="white"
+              hoverColor={color.lightBlue}
+              textHover="white"
+              paddingX="250px"
+              paddingY="18px"
+            >
+              <p className="text-[20px] leading-[26px]">SEARCH</p>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

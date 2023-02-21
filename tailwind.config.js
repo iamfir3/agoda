@@ -23,6 +23,8 @@ module.exports = {
         lightBlue: "#87b3fb",
         lightBlue2:'#dde9fd',
         darkGrey:'#38435a',
+        pink:'#ff567d',
+        yellow:'#ffa726'
       },
       backgroundColor: {
         primary: "#5392f9",
@@ -43,6 +45,8 @@ module.exports = {
         lightBlue: "#87b3fb",
         lightBlue2:'#dde9fd',
         darkGrey:'#38435a',
+        pink:'#ff567d',
+        yellow:'#ffa726'
       },
       keyframes: {
         showSearch: {

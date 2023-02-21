@@ -19,6 +19,7 @@ const InputWithValidation = ({
       <input
         type={type}
         placeholder={placeholder}
+        defaultValue=''
         className={`w-full px-[10px] py-[8px] placeholder:text-[14px] transition-all ease-in-out placeholder:text-lightGrey outline-none ${Cssclass.InputAuth}`}
         style={{
           "--borderColor": validateText === "" ? color.grey2 : color.red,

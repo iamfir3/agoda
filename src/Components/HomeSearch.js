@@ -8,87 +8,71 @@ import Tag from "./Tag";
 import { useState } from "react";
 import Destination from "./Destination";
 import AmountPeopleOptions from "./AmountPeopleOptions";
+import { useOutletContext } from "react-router-dom";
+import AddingFlight from "./AddingFlight";
 
 const HomeSearch = () => {
   const [type, setType] = useState("Overnight Stays");
+  const { isSearching, setIsSearching, showOptions, handleShowOptions } =
+    useOutletContext();
   const [destination, setDestination] = useState();
   const [days, setDays] = useState({ checkin: "", checkout: "" });
   const [flightInfo, setFlightInfo] = useState();
   const [isTyping, setIsTyping] = useState(false);
-  const [showOptions, setShowOptions] = useState({
-    search: false,
-    date: false,
-    amount: false,
-  });
+  const [isAddingFlight, setIsAddingFlight] = useState(false);
+  const [amountState, setAmountState] = useState("solo");
+
   const [amount, setAmount] = useState({ adult: 1, room: 1, children: 0 });
-  
-  const handleShowOptions = (option) => {
-    if (option) {
-      setShowOptions((prev) => {
-        const newOptionShow = { ...prev };
-        Object.keys(newOptionShow).map((key) => {
-          if (key !== option) {
-            newOptionShow[key] = false;
-          } else {
-            newOptionShow[key] = true;
-          }
-        });
-        return newOptionShow;
-      });
-    } else {
-      setShowOptions((prev) => {
-        const newOptionShow = { ...prev };
-        Object.keys(newOptionShow).map((key) => {
-          newOptionShow[key] = false;
-        });
-        return newOptionShow;
-      });
-    }
-  };
 
   return (
-    <div className="bg-white w-full px-[48px] pb-[48px] pt-[32px] rounded-[18px]">
-      <div className="flex gap-[10px]">
-        <div
-          onClick={() => {
-            if (type !== "Overnight Stays") setType("Overnight Stays");
-          }}
-        >
-          <Button
-            backgroundColor={
-              type === "Overnight Stays" ? color.primary : "white"
-            }
-            hoverColor={color.lightBlue}
-            paddingX="5px"
-            paddingY="10px"
-            textColor={type === "Overnight Stays" ? "white" : color.lightBlue}
-            textHover="white"
-            borderColor={color.lightBlue}
+    <div className="bg-background3 w-full px-[48px] pb-[48px] pt-[32px] rounded-[18px]">
+      {!isAddingFlight && (
+        <div className="flex gap-[10px] z-[4] relative">
+          <div
+            onClick={() => {
+              if (type !== "Overnight Stays") setType("Overnight Stays");
+            }}
           >
-            <p>Overnight Stays</p>
-          </Button>
-        </div>
+            <Button
+              backgroundColor={
+                type === "Overnight Stays" ? color.primary : "white"
+              }
+              hoverColor={color.lightBlue}
+              paddingX="5px"
+              paddingY="10px"
+              textColor={type === "Overnight Stays" ? "white" : color.lightBlue}
+              textHover="white"
+              borderColor={color.lightBlue}
+            >
+              <p>Overnight Stays</p>
+            </Button>
+          </div>
 
-        <div
-          onClick={() => {
-            if (type !== "Day Use Stays") setType("Day Use Stays");
-          }}
-        >
-          <Button
-            backgroundColor={type === "Day Use Stays" ? color.primary : "white"}
-            hoverColor={color.lightBlue}
-            paddingX="5px"
-            paddingY="10px"
-            textColor={type === "Day Use Stays" ? "white" : color.lightBlue}
-            textHover="white"
-            borderColor={color.lightBlue}
+          <div
+            onClick={() => {
+              if (type !== "Day Use Stays") setType("Day Use Stays");
+            }}
           >
-            <p>Day Use Stays</p>
-          </Button>
+            <Button
+              backgroundColor={
+                type === "Day Use Stays" ? color.primary : "white"
+              }
+              hoverColor={color.lightBlue}
+              paddingX="5px"
+              paddingY="10px"
+              textColor={type === "Day Use Stays" ? "white" : color.lightBlue}
+              textHover="white"
+              borderColor={color.lightBlue}
+            >
+              <p>Day Use Stays</p>
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="flex w-full relative gap-[15px] bg-white border-[1px] border-superLightGrey h-[65px] items-center px-[25px] mt-[13px] rounded-[8px]">
+      {isAddingFlight && <p className="font-[800] text-black">Hotel</p>}
+
+      <div className="flex w-full relative gap-[15px] bg-white border-[1px] border-superLightGrey z-[4] h-[65px] items-center px-[25px] mt-[13px] rounded-[8px]">
         <CiSearch size="30" className="text-grey placeholder:text-black" />
         <input
           placeholder="Enter a destination or properly"
@@ -110,8 +94,8 @@ const HomeSearch = () => {
       </div>
 
       <div className="flex w-full mt-[12px] gap-[12px]">
-        <div className="flex border-[1px] border-superLightGrey py-[15px] w-[45%] rounded-[8px]">
-          <div className="flex text-grey items-center gap-[16px] flex-1 border-r-[1px] border-superLightGrey px-[10px] pl-[15px]">
+        <div className="flex border-[1px] border-superLightGrey py-[15px] w-[50%] rounded-[8px] bg-white relative z-[10]">
+          <div className="flex text-grey items-center gap-[16px] flex-1 border-r-[1px] border-superLightGrey px-[10px] pl-[15px] ">
             <FaRegCalendarCheck className="text-[24px]"></FaRegCalendarCheck>
             <div>
               <p className="text-black text-[16px] leading-[23px]">
@@ -121,7 +105,7 @@ const HomeSearch = () => {
             </div>
           </div>
 
-          <div className="flex text-grey items-center gap-[16px] flex-1 px-[10px] items-center">
+          <div className="flex text-grey items-center gap-[16px] flex-1 px-[10px] items-center z-[4] bg-white relative">
             <FaRegCalendarCheck className="text-[24px]"></FaRegCalendarCheck>
             <div>
               <p className="text-black text-[16px] leading-[23px]">
@@ -133,7 +117,7 @@ const HomeSearch = () => {
         </div>
 
         <div
-          className="flex border-[1px] border-superLightGrey py-[15px] flex-auto items-center justify-between text-grey rounded-[8px] px-[25px] relative z-[11]"
+          className="flex border-[1px] border-superLightGrey bg-white py-[15px] flex-auto items-center justify-between text-grey rounded-[8px] px-[25px] relative z-[11]"
           onClick={() => {
             handleShowOptions("amount");
           }}
@@ -147,7 +131,8 @@ const HomeSearch = () => {
                 </p>
                 {amount.children > 0 && (
                   <p className="text-black text-[16px] leading-[23px]">
-                    {amount.children}, children
+                    , {amount.children}{" "}
+                    {amount.children >= 2 ? "childrens" : "child"}
                   </p>
                 )}
               </div>
@@ -157,43 +142,57 @@ const HomeSearch = () => {
           <SlArrowDown className=""></SlArrowDown>
 
           {showOptions.amount && (
-            <AmountPeopleOptions
-              setShowOptions={setShowOptions}
-              setAmount={setAmount}
-            ></AmountPeopleOptions>
+            <div className="w-full absolute top-[90px] rounded-[8px] left-0 z-[12]">
+              <AmountPeopleOptions
+                handleShowOptions={handleShowOptions}
+                setAmount={setAmount}
+                amount={amount}
+                setIsSearching={setIsSearching}
+                amountState={amountState}
+                setAmountState={setAmountState}
+              ></AmountPeopleOptions>
+            </div>
           )}
         </div>
       </div>
 
-      <div className="mt-[24px] flex gap-[8px] items-center">
-        <Tag className="mr-[4px]">
-          <p>Bundle & Save</p>
-        </Tag>
+      {!isAddingFlight && (
+        <div className="mt-[24px] flex gap-[8px] items-center z-[4] relative">
+          <Tag className="mr-[4px]">
+            <p>Bundle & Save</p>
+          </Tag>
 
-        <div className="flex items-center gap-[8px] border-[1px] border-superLightGrey px-[24px] py-[12px] text-[14px] leading-[20px]">
-          <p>+ Add a flight</p>
-          <svg
-            width="1em"
-            height="1em"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M13.639 6.772l3.386-3.386a4.5 4.5 0 0 1 1.77-1.091l1.68-.555a1.86 1.86 0 0 1 2.348 2.355l-.558 1.676a4.5 4.5 0 0 1-1.088 1.76l-3.404 3.404 2.155 9.77a1.3 1.3 0 0 1-.35 1.199l-.673.673a1.3 1.3 0 0 1-2.055-.286l-3.834-6.868-3.676 3.072.839 2.626a1 1 0 0 1-.235 1l-.98 1.012a1 1 0 0 1-1.57-.172l-2.226-3.622-3.63-2.228a1 1 0 0 1-.195-1.548l.986-1.017a1 1 0 0 1 1.028-.254l2.779.907 3.017-3.657L2.31 7.745a1.3 1.3 0 0 1-.288-2.056l.672-.673a1.3 1.3 0 0 1 1.194-.351l9.752 2.107z"></path>
-          </svg>
-        </div>
+          <div className="flex items-center gap-[8px] bg-white border-[1px] rounded-[6px] border-superLightGrey px-[24px] py-[12px] text-[14px] leading-[20px]" onClick={()=>{setIsAddingFlight(true)}}>
+            <p>+ Add a flight</p>
+            <svg
+              width="1em"
+              height="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M13.639 6.772l3.386-3.386a4.5 4.5 0 0 1 1.77-1.091l1.68-.555a1.86 1.86 0 0 1 2.348 2.355l-.558 1.676a4.5 4.5 0 0 1-1.088 1.76l-3.404 3.404 2.155 9.77a1.3 1.3 0 0 1-.35 1.199l-.673.673a1.3 1.3 0 0 1-2.055-.286l-3.834-6.868-3.676 3.072.839 2.626a1 1 0 0 1-.235 1l-.98 1.012a1 1 0 0 1-1.57-.172l-2.226-3.622-3.63-2.228a1 1 0 0 1-.195-1.548l.986-1.017a1 1 0 0 1 1.028-.254l2.779.907 3.017-3.657L2.31 7.745a1.3 1.3 0 0 1-.288-2.056l.672-.673a1.3 1.3 0 0 1 1.194-.351l9.752 2.107z"></path>
+            </svg>
+          </div>
 
-        <div className="flex items-center gap-[8px] border-[1px] border-superLightGrey px-[24px] py-[12px] text-[14px] leading-[20px]">
-          <p>+ Add a flight</p>
-          <svg
-            width="1em"
-            height="1em"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M2.176 1.018L9.263 1a1.179 1.179 0 0 1 1.182 1.176v7.8c0 .26-.247.447-.498.378L7.5 9.678a.786.786 0 0 0-.995.757v11.358c0 .65-.528 1.178-1.18 1.178H2.18A1.179 1.179 0 0 1 1 21.793V2.197c0-.65.526-1.177 1.176-1.179zm1.387 1.55a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm3.93 0a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.357a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm-3.93 3.928a1 1 0 0 0-1 1v.358a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm0 3.93a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.357a1 1 0 0 0-1-1h-.358zm13.164 3.985c.464.17.773.614.772 1.109l-.013 6.29a1.179 1.179 0 0 1-1.182 1.176h-.008l-1.54-.015a.393.393 0 0 1-.39-.393v-3.113a.393.393 0 0 0-.392-.393h-2.382a.393.393 0 0 0-.393.393v3.113a.393.393 0 0 1-.393.393H9.239a1.179 1.179 0 0 1-1.178-1.178v-9.441a.786.786 0 0 1 1.057-.738l7.609 2.797zm-.375-8.716h5.487c.65 0 1.178.528 1.178 1.179v14.919c0 .65-.527 1.178-1.178 1.178h-1.602a1.179 1.179 0 0 1-1.179-1.178v-7.189c0-.483-.295-.917-.744-1.096l-2.893-1.145a.393.393 0 0 1-.248-.366V6.874c0-.651.528-1.179 1.179-1.179z"></path>
-          </svg>
+          <div className="flex items-center gap-[8px] bg-white border-[1px] rounded-[6px] border-superLightGrey px-[24px] py-[12px] text-[14px] leading-[20px]">
+            <p>+ Add a flight</p>
+            <svg
+              width="1em"
+              height="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M2.176 1.018L9.263 1a1.179 1.179 0 0 1 1.182 1.176v7.8c0 .26-.247.447-.498.378L7.5 9.678a.786.786 0 0 0-.995.757v11.358c0 .65-.528 1.178-1.18 1.178H2.18A1.179 1.179 0 0 1 1 21.793V2.197c0-.65.526-1.177 1.176-1.179zm1.387 1.55a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm3.93 0a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.357a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm-3.93 3.928a1 1 0 0 0-1 1v.358a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.358a1 1 0 0 0-1-1h-.358zm0 3.93a1 1 0 0 0-1 1v.357a1 1 0 0 0 1 1h.358a1 1 0 0 0 1-1v-.357a1 1 0 0 0-1-1h-.358zm13.164 3.985c.464.17.773.614.772 1.109l-.013 6.29a1.179 1.179 0 0 1-1.182 1.176h-.008l-1.54-.015a.393.393 0 0 1-.39-.393v-3.113a.393.393 0 0 0-.392-.393h-2.382a.393.393 0 0 0-.393.393v3.113a.393.393 0 0 1-.393.393H9.239a1.179 1.179 0 0 1-1.178-1.178v-9.441a.786.786 0 0 1 1.057-.738l7.609 2.797zm-.375-8.716h5.487c.65 0 1.178.528 1.178 1.179v14.919c0 .65-.527 1.178-1.178 1.178h-1.602a1.179 1.179 0 0 1-1.179-1.178v-7.189c0-.483-.295-.917-.744-1.096l-2.893-1.145a.393.393 0 0 1-.248-.366V6.874c0-.651.528-1.179 1.179-1.179z"></path>
+            </svg>
+          </div>
         </div>
-      </div>
+      )}
+
+      {isAddingFlight && (
+        <>
+          <AddingFlight setIsAddingFlight={setIsAddingFlight}></AddingFlight>
+        </>
+      )}
     </div>
   );
 };

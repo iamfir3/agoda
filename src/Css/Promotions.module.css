@@ -1,5 +1,5 @@
-
-
-.image{
-    
+@media only screen and (min-width: 1024px) {
+  .image {
+    transform: translateX(calc(var(--translateX) * var(--move) * -1));
+  }
 }

@@ -1,6 +1,7 @@
 import { Header, AuthFormLogin, HeaderWithBack } from "../Components";
 import { IoIosArrowBack, IoIosUnlock } from "react-icons/io";
 import { HiCheckCircle } from "react-icons/hi";
+import {Footer,FooterPartner} from "../Components"
 
 const Login = () => {
   return (
@@ -38,6 +39,12 @@ const Login = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="bg-background4 w-full flex justify-center pt-[60px] pb-[50px]">
+          <Footer></Footer>
+        </div>
+        <div className="w-full flex justify-center bg-background5 pt-[48px] pb-[12px]">
+          <FooterPartner></FooterPartner>
         </div>
       </div>
       {/* Mobile */}

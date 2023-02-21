@@ -16,3 +16,8 @@ export {default as PromotionItem} from "./PromotionItem";
 export {default as VacationRentalItem} from "./VacationRentaItem";
 export {default as VacationRental} from "./VacationRental";
 export {default as FooterPartner} from "./FooterPartner";
+export {default as DestinationsCarousel} from "./DestinationsCarousel";
+export {default as TopDestinationsInside} from "./TopDestinationsInside";
+export {default as TopDestinationsOutside} from "./TopDestinationsOutside";
+export {default as FeaturedRecommended} from './FeaturedRecommended';
+export {default as RecommendedPlaces} from "./RecommendedPlaces";

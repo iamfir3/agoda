@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Cssclass from ".././Css/Login.module.css";
 import { color } from "../Utils/Constans";
 import InputWithValidation from "./InputWithValidation";
+import { useDispatch } from "react-redux";
+import { register } from "../store/actions/authActions";
 
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
@@ -20,6 +22,17 @@ const AuthFormSignup = () => {
     setValidatePasswordConfirmationText,
   ] = useState("");
 
+  const dispatch = useDispatch();
+  console.log(
+    validateEmailText === "",
+    validatePasswordConfirmationText === "",
+    validatePasswordText === "",
+    firstName === "",
+    lastName === "",
+    email === "",
+    password === "",
+    passwordConfirmation === ""
+  );
   useEffect(() => {
     if (regexEmail.test(email) === false) {
       if (validateEmailText !== "Invalid email")
@@ -121,7 +134,30 @@ const AuthFormSignup = () => {
           </label>
         </div>
 
-        <button className="w-full bg-primary  transition-all ease-in-out text-white h-[40px] text-[14px] font-[500] rounded-[6px] mt-[5px] shadow-xl active:bg-[#003385]">
+        <button
+          className={`w-full transition-all ease-in-out text-white h-[40px] text-[14px] font-[500] rounded-[6px] mt-[5px] shadow-xl ${
+            validateEmailText !== "" ||
+            validatePasswordConfirmationText !== "" ||
+            validatePasswordText !== "" ||
+            firstName === "" ||
+            lastName === "" ||
+            email === "" ||
+            password === "" ||
+            passwordConfirmation === ""
+              ? "bg-lightBlue"
+              : "bg-primary active:bg-[#003385]"
+          }`}
+          onClick={() => {
+            dispatch(
+              register({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+              })
+            );
+          }}
+        >
           Sign up
         </button>
 
@@ -162,9 +198,12 @@ const AuthFormSignup = () => {
             <div className="h-[1px] w-full bg-lightGrey absolute z-[1]"></div>
           </div>
 
-          <div className="hidden md:flex w-full text-primary font-[500] text-[14px] gap-[6px] justify-center border-[1px] border-primary h-[45px] rounded-[6px] items-center mt-[16px] hover:bg-lightBlue hover:text-white transition-all ease-in-out">
+          <Link
+            to="/login"
+            className="hidden md:flex w-full text-primary font-[500] text-[14px] gap-[6px] justify-center border-[1px] border-primary h-[45px] rounded-[6px] items-center mt-[16px] hover:bg-lightBlue hover:text-white transition-all ease-in-out"
+          >
             <p className="cursor-pointer">Already have an account? Sign in</p>
-          </div>
+          </Link>
 
           <p className="text-[12px] text-center mt-[10px] md:mt-[20px] md:mt-[18px]">
             By signing in, I agree to Agoda's{" "}

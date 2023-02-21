@@ -17,5 +17,6 @@ export const color = {
     lightRed: "#ff567d",
     darkRed: "#b42424",
     background1:'#EAEBEF',
-    grey2:'#cfd0d2'
+    grey2:'#cfd0d2',
+    pink:'#ff567d',
   };

@@ -9,6 +9,7 @@
     "axios": "^1.2.6",
     "framer-motion": "^8.5.2",
     "react": "^18.2.0",
+    "react-devtools": "^4.27.2",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.7.1",
@@ -18,7 +19,9 @@
     "react-slick": "^0.29.0",
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
